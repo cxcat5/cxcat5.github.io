@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鵼之碑 中文翻译 - 第一章</title>
+    <link rel="stylesheet" href="chapter-style.css">
+</head>
+<body>
+    <div class="chapter-detail">
+      <div class="chapter-header-flex">
+        <a href="index.html" class="detail-btn">返回首页</a>
+        <div class="author-info author-info-right">
+            <span>作者：京极夏彦</span> | <span>翻译：Stardust_星</span>
+        </div>
+      </div>
+        <h1>鵼之碑 第一章 鵼</h1>
+        <h2>——来自久住加壽夫的创作笔记</h2>
+        <div class="chapter-translate" id="chapter-pages">
+            <!-- 分页内容将由JS动态插入 -->
+        </div>
+        <div class="page-controls" style="text-align:center;margin-top:24px;">
+            <button id="prevPage" class="detail-btn" style="margin-right:16px;">上一页</button>
+            <span id="pageInfo" style="font-size:1em;color:#666;"></span>
+            <button id="nextPage" class="detail-btn" style="margin-left:16px;">下一页</button>
+        </div>
+        <script>
+        // 1. 通过fetch加载txt内容，按段落分割
+        let allParagraphs = [];
+        const pageSize = 20; // 每页20段
+        let currentPage = 1;
+        
+        fetch('chapter3.txt')
+          .then(response => response.text())
+          .then(text => {
+            // 按换行分割段落，并去除空行
+            allParagraphs = text.split(/\r?\n/).map(p => p.trim()).filter(p => p.length > 0);
+            renderPage(currentPage);
+          });
+
+        function renderPage(page) {
+          const chapterPages = document.getElementById('chapter-pages');
+          const start = (page - 1) * pageSize;
+          const end = start + pageSize;
+          const pageParagraphs = allParagraphs.slice(start, end);
+          chapterPages.innerHTML = pageParagraphs.map(p => `<p>${p}</p>`).join('');
+          // 页码信息
+          const pageInfo = document.getElementById('pageInfo');
+          const totalPages = Math.ceil(allParagraphs.length / pageSize);
+          pageInfo.textContent = `第${page}页 / 共${totalPages}页`;
+          // 按钮状态
+          document.getElementById('prevPage').disabled = (page === 1);
+          document.getElementById('nextPage').disabled = (page === totalPages);
+          // 翻页后自动跳回页面顶部（兼容主流浏览器）
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          // 或者 document.documentElement.scrollTop = 0; 也可以
+        }
+
+
+        
+        document.getElementById('prevPage').onclick = function() {
+          if (currentPage > 1) {
+            currentPage--;
+            renderPage(currentPage);
+          }
+        };
+        document.getElementById('nextPage').onclick = function() {
+          const totalPages = Math.ceil(allParagraphs.length / pageSize);
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderPage(currentPage);
+          }
+        };
+        </script>
+        </div>
+    </div>
+</body>
+</html>

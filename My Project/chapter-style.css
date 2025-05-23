@@ -1,0 +1,145 @@
+/* chapter1 专属美化样式 */
+
+/* 章节整体容器样式，增加留白和阴影 */
+.chapter-detail {
+    /* 内容容器居中，增加圆角和阴影，提升层次感 */
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+    max-width: 900px;
+    margin: 48px auto 48px auto;
+    padding: 40px 24px 44px 24px;
+    box-sizing: border-box;
+    min-height: 600px;
+}
+
+/* 章节主标题美化 */
+.chapter-detail h1 {
+    /* 主标题居中，字号适中，颜色与首页统一，增加左右内边距避免贴边 */
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.1em;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+/* 副标题美化 */
+.chapter-detail h2 {
+    /* 副标题样式优化，颜色更柔和，间距适中，增加左右内边距避免贴边 */
+    text-align: center;
+    color: #666;
+    font-size: 1.12em;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 0;
+    letter-spacing: 1px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* 章节正文排版优化 */
+.chapter-translate {
+    /* 正文排版优化，字号适中，留白充足，提升可读性，左右留白更宽 */
+    font-size: 1.08em;
+    color: #23272f;
+    line-height: 2.0;
+    letter-spacing: 0.02em;
+    word-break: break-all;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 0 22px;
+}
+
+.chapter-translate p {
+    margin: 0 0 24px 0;
+    text-indent: 2em;
+    text-align: justify;
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'SimHei', Arial, sans-serif;
+    font-size: 1.13em;
+}
+
+.chapter-translate p + p {
+    margin-top: 10px;
+}
+
+/* 列表美化，提升层次感 */
+.chapter-translate ul,
+.chapter-translate ol {
+    margin: 18px 0 18px 38px;
+    padding-left: 0;
+    color: #384055;
+    font-size: 1.07em;
+    line-height: 2.12;
+}
+.chapter-translate li {
+    margin-bottom: 7px;
+    list-style-type: disc;
+}
+
+/* 引用样式美化 */
+.chapter-translate blockquote {
+    border-left: 4px solid #4f8cff;
+    background: #f7faff;
+    color: #4a5a6a;
+    margin: 18px 0;
+    padding: 14px 20px;
+    border-radius: 7px;
+    font-style: italic;
+}
+
+/* 分隔线样式 */
+.chapter-translate hr {
+    border: none;
+    border-top: 1.5px dashed #bfc9d5;
+    margin: 36px 0;
+}
+
+/* 章节内按钮美化 */
+.chapter-detail .detail-btn {
+    display: inline-block;
+    padding: 8px 22px;
+    background: #4f8cff;
+    color: #fff;
+    border-radius: 7px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.03em;
+    margin: 0 auto 12px auto;
+    transition: background 0.2s;
+}
+.chapter-detail .detail-btn:hover {
+    background: #2563c9;
+}
+
+/* 作者译者信息调整，颜色更柔和，间距适中，增加左右内边距避免贴边 */
+.chapter-detail .author-info {
+    text-align: left;
+    color: #666;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 0;
+    letter-spacing: 1px;
+    padding: 10px 0px;
+}
+/* 响应式支持（手机端优化） */
+@media (max-width: 600px) {
+    .chapter-detail {
+        padding: 14px 2vw 18px 2vw;
+        margin: 14px 0 14px 0;
+        max-width: 99vw;
+    }
+    .chapter-img {
+        max-width: 98vw;
+        margin: 12px auto 12px auto;
+    }
+    .chapter-translate {
+        font-size: 0.98em;
+        padding: 0 1vw;
+    }
+}
+
+
